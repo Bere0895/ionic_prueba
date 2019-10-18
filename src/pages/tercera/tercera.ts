@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController} from 'ionic-angular';
 
+import { DatabaseProvider } from '../../providers/database/database'
+import {  FormBuilder } from '@angular/forms';
 /**
  * Generated class for the TerceraPage page.
  *
@@ -14,12 +16,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'tercera.html',
 })
 export class TerceraPage {
+  ListUser: any;
+  
+  constructor(public navCtrl: NavController, private database: DatabaseProvider, private formBuilder: FormBuilder) {
+   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+  GetAllUser(){
+    this.database.GetAllUsers().then((data: any) => {
+      console.log(data);
+      this.ListUser = data;
+    }, (error) => {
+      console.log(error);
+    })
   }
 
+  DeleteUser(idUser){
+    console.log(idUser);
+
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad TerceraPage');
   }
 
 }
+
+
+  

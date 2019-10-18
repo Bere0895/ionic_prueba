@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { SegundaPage } from '../segunda/segunda';
@@ -23,3 +24,5 @@ export class HomePage {
   }
 
 }
+
+

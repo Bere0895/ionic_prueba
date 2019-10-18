@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
+import { IonicPage, NavController } from 'ionic-angular';
 
+import { DatabaseProvider } from '../../providers/database/database'
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 /**
  * Generated class for the SegundaPage page.
  *
@@ -15,32 +16,35 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'segunda.html',
 })
 export class SegundaPage {
-  user =new Object()
- 
+  private todo: FormGroup;
+  constructor(public navCtrl: NavController, private database: DatabaseProvider, private formBuilder: FormBuilder) {
 
-  inputtext:string;
-  inputmail:string
-  key:string;
+    this.todo = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]],
+      email: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]],
+      contrasena: ['', Validators.required],
+      contrasenac: ['', Validators.required]
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage) {
+    });
+
   }
+
+  
+  CreateUser(){
+    console.log(this.todo);
+    
+    this.database.CreateUser(this.todo.value.contrasena, this.todo.value.name, this.todo.value.email ).then( (data) => {
+      console.log(data);
+    }, (error) => {
+      console.log(error);
+    })
+  }
+
+  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SegundaPage');
   }
 
-  saveData(){
-    this.user.name=this.inputtext
-    this.user.email=this.inputmail
-    console.log(this.user.email)
-    this.storage.set(this.key, this.inputtext);
-  }
-
-  loadData(){
-
-    this.storage.get(this.key).then((val) => {
-      console.log('Your username is', val.name);
-      console.log('email : ', val.email)
-    });
-  }
 }
+
