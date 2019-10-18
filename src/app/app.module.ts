@@ -7,14 +7,20 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
+import { SegundaPageModule } from '../pages/segunda/segunda.module';
+import { TerceraPageModule } from '../pages/tercera/tercera.module';
+import { IonicStorageModule } from '@ionic/storage';
 @NgModule({
   declarations: [
     MyApp,
     HomePage
   ],
   imports: [
+    SegundaPageModule,
+    TerceraPageModule,
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
