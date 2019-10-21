@@ -14,7 +14,7 @@
       <ion-input type="text" formControlName="name"></ion-input>
     </ion-item>
     <ion-item *ngIf="todo.get('name').errors && todo.get('name').dirty">
-      <p color="danger" ion-text *ngIf="todo.get('name').hasError('required')"> Campo es requerido</p>
+     <p color="danger" ion-text *ngIf="todo.get('name').hasError('required')"> Campo es requerido</p>
       <p color="danger" ion-text *ngIf="todo.get('name').hasError('minlength')"> Cantidad minima de caractares es (4)</p>
       <p color="danger" ion-text *ngIf="todo.get('name').hasError('maxlength')"> Cantidad maxima de caractares es (8)</p>
     </ion-item>
@@ -30,11 +30,11 @@
     </ion-item>
     <ion-item>
       <ion-label>Contraseña</ion-label>
-      <ion-input type="text" formControlName="contrasena"></ion-input>
+      <ion-input type="password" formControlName="contrasena" ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Confirmar Contraseña</ion-label>
-      <ion-input type="text" formControlName="contrasenac"></ion-input>
+      <ion-input type="password" formControlName="contrasenac"></ion-input>
     </ion-item>
     <button ion-button type="submit" [disabled]="!todo.valid" (click)="CreateUser()" >Crear Usuario</button>
   </form>

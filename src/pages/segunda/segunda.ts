@@ -3,6 +3,8 @@ import { IonicPage, NavController } from 'ionic-angular';
 
 import { DatabaseProvider } from '../../providers/database/database'
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { AlertController } from 'ionic-angular';
+
 /**
  * Generated class for the SegundaPage page.
  *
@@ -17,7 +19,12 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 })
 export class SegundaPage {
   private todo: FormGroup;
-  constructor(public navCtrl: NavController, private database: DatabaseProvider, private formBuilder: FormBuilder) {
+  constructor(
+    public navCtrl: NavController, 
+    private database: DatabaseProvider, 
+    private formBuilder: FormBuilder,
+    private alertCtrl: AlertController
+    ) {
 
     this.todo = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]],
@@ -30,15 +37,23 @@ export class SegundaPage {
   }
 
   
-  CreateUser(){
-    console.log(this.todo);
-    
+  CreateUser(){       
+    console.log(this.todo);    
     this.database.CreateUser(this.todo.value.contrasena, this.todo.value.name, this.todo.value.email ).then( (data) => {
       console.log(data);
     }, (error) => {
       console.log(error);
     })
-  }
+    let alert = this.alertCtrl.create({
+      title: ';) ;)',
+      subTitle: 'Datos guardados ',
+      buttons: ['OK']
+    });
+    alert.present();
+
+      }
+
+  
 
   
 

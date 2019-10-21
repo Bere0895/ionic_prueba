@@ -4,12 +4,7 @@ import 'rxjs/add/operator/map';
 
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 
-/*
-  Generated class for the DatabaseProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class DatabaseProvider {
 
@@ -18,7 +13,8 @@ export class DatabaseProvider {
 
   constructor(
     public http: Http,
-    public storage: SQLite
+    public storage: SQLite,
+    
   ) {
     if (!this.isOpen) {
       this.storage = new SQLite();
@@ -64,8 +60,6 @@ export class DatabaseProvider {
     })
   }
 
-  DeleteUser(idUser){
-    
-  }
+  
 
 }

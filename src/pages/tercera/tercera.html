@@ -7,7 +7,7 @@
 
 </ion-header>
 <ion-content padding>
-<button ion-button block (click)="GetAllUser();"> Listar Usuarios</button>
+  <button ion-button (click)="GetAllUser();">Listar Usuarios</button>
 
 <ion-list>
   <ion-item-sliding *ngFor="let item of ListUser">

@@ -11,6 +11,7 @@ import { DatabaseProvider } from '../providers/database/database';
 import { SegundaPageModule } from '../pages/segunda/segunda.module';
 import { TerceraPageModule } from '../pages/tercera/tercera.module';
 import { SQLite } from '@ionic-native/sqlite';
+import { AlertController } from 'ionic-angular';
 
 import { HttpModule } from '@angular/http'
 
@@ -36,6 +37,7 @@ import { HttpModule } from '@angular/http'
     StatusBar,
     SplashScreen,
     SQLite,
+    AlertController,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatabaseProvider
   ]
