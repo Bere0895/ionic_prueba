@@ -24,8 +24,9 @@ export class TerceraPage {
   }
   GetAllUser(){
     this.database.GetAllUsers().then((data: any) => {
-      console.log(data);
-      this.ListUser = data;
+      var b = this.ListUser.pop();
+      console.log(b);
+      this.ListUser = b;
     }, (error) => {
       console.log(error);
     })

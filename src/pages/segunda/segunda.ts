@@ -41,15 +41,22 @@ export class SegundaPage {
     console.log(this.todo);    
     this.database.CreateUser(this.todo.value.contrasena, this.todo.value.name, this.todo.value.email ).then( (data) => {
       console.log(data);
+      let alert = this.alertCtrl.create({
+        title: ';) ;)',
+        subTitle: 'Datos guardados ',
+        buttons: ['OK']
+      });
+      alert.present();
     }, (error) => {
       console.log(error);
+      let alert = this.alertCtrl.create({
+        title: ';) ;)',
+        subTitle: 'Datos no guardados ',
+        buttons: ['OK']
+      });
+      alert.present();
     })
-    let alert = this.alertCtrl.create({
-      title: ';) ;)',
-      subTitle: 'Datos guardados ',
-      buttons: ['OK']
-    });
-    alert.present();
+   
 
       }
 
