@@ -15,8 +15,8 @@
     </ion-item>
     <ion-item *ngIf="todo.get('name').errors && todo.get('name').dirty">
      <p color="danger" ion-text *ngIf="todo.get('name').hasError('required')"> Campo es requerido</p>
-      <p color="danger" ion-text *ngIf="todo.get('name').hasError('minlength')"> Cantidad minima de caractares es (4)</p>
-      <p color="danger" ion-text *ngIf="todo.get('name').hasError('maxlength')"> Cantidad maxima de caractares es (8)</p>
+      <p color="danger" ion-text *ngIf="todo.get('name').hasError('minlength')"> Cantidad minima de caractares es (1)</p>
+      <p color="danger" ion-text *ngIf="todo.get('name').hasError('maxlength')"> Cantidad maxima de caractares es (20)</p>
     </ion-item>
 
     <ion-item>
@@ -25,8 +25,8 @@
     </ion-item>
     <ion-item *ngIf="todo.get('email').errors && todo.get('email').dirty">
       <p color="danger" ion-text *ngIf="todo.get('email').hasError('required')"> Campo es requerido</p>
-      <p color="danger" ion-text *ngIf="todo.get('email').hasError('minlength')"> Cantidad minima de caractares es (4)</p>
-      <p color="danger" ion-text *ngIf="todo.get('email').hasError('maxlength')"> Cantidad maxima de caractares es (8)</p>
+      <p color="danger" ion-text *ngIf="todo.get('email').hasError('minlength')"> Cantidad minima de caractares es (1)</p>
+      <!--<p color="danger" ion-text *ngIf="todo.get('email').hasError('maxlength')"> Cantidad maxima de caractares es (50)</p> -->
     </ion-item>
     <ion-item>
       <ion-label>Contraseña</ion-label>

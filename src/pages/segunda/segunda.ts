@@ -18,6 +18,9 @@ import { AlertController } from 'ionic-angular';
   templateUrl: 'segunda.html',
 })
 export class SegundaPage {
+
+  private ListUser : any;  
+
   private todo: FormGroup;
   constructor(
     public navCtrl: NavController, 
@@ -27,8 +30,8 @@ export class SegundaPage {
     ) {
 
     this.todo = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]],
-      email: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]],
+     name: ['', Validators.required],
+      email: ['', Validators.required],
       contrasena: ['', Validators.required],
       contrasenac: ['', Validators.required]
 
@@ -41,6 +44,7 @@ export class SegundaPage {
     console.log(this.todo);    
     this.database.CreateUser(this.todo.value.contrasena, this.todo.value.name, this.todo.value.email ).then( (data) => {
       console.log(data);
+      this.GetAllUser();
       let alert = this.alertCtrl.create({
         title: ';) ;)',
         subTitle: 'Datos guardados ',
@@ -55,13 +59,21 @@ export class SegundaPage {
         buttons: ['OK']
       });
       alert.present();
+      
     })
    
 
       }
-
+ 
+      GetAllUser(){
+        this.database.GetAllUsers().then((data: any) => {
+          console.log(data);
+          this.ListUser = data;
+        }, (error) => {
+          console.log(error);
+        })
+      }
   
-
   
 
   ionViewDidLoad() {

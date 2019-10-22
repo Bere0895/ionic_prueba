@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController} from 'ionic-angular';
 
 import { DatabaseProvider } from '../../providers/database/database'
-import {  FormBuilder } from '@angular/forms';
+
 /**
  * Generated class for the TerceraPage page.
  *
@@ -17,16 +17,17 @@ import {  FormBuilder } from '@angular/forms';
 })
 export class TerceraPage {
   ListUser: any;
+  ultimodato: any;
   
-  constructor(public navCtrl: NavController, private database: DatabaseProvider, private formBuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, private database: DatabaseProvider) {
    
 
   }
   GetAllUser(){
-    this.database.GetAllUsers().then((data: any) => {
-      var b = this.ListUser.pop();
-      console.log(b);
-      this.ListUser = b;
+    this.database.GetAllUsers().then((data: any) => {      
+      console.log(data);
+      this.ListUser = data;
+      
     }, (error) => {
       console.log(error);
     })
